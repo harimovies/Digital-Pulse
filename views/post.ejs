@@ -1,0 +1,53 @@
+<h1><%= data.title %></h1>
+<div class="post-page-section1">
+  <div class="post-page-img">
+    <img src="/img/<%= data.filename %>" alt="" />
+  </div>
+  <div class="post-page-synopsis">
+    <h5>Synopsis</h5>
+    <p class="synopsis"><%= data.synopsis %></p>
+  </div>
+</div>
+<div>
+  <article class="article"><%= data.body %></article>
+</div>
+
+<!-- --------------------------------------- -->
+
+<div class="comments-section">
+  <h5>Comments</h5>
+  <!-- comment box starts 1 -->
+  <% comments_arr.forEach(comment => { %>
+  <div class="comment-box">
+    <h5 class="comment-user"><%= comment.subscriber_name %></h5>
+    <p class="comment">
+      <%= comment.comment_content %>
+      <span class="comment-date"><%= comment.createdAt.toDateString() %></span>
+    </p>
+  </div>
+  <% }) %>
+  <!-- comment box ends 1 -->
+</div>
+
+<!-- Add comments section -->
+<div class="add-comments">
+  <h5 style="font-size: 20px">Add your Comments</h5>
+  <form action="/post/addComment/<%= data._id %>" method="post">
+    <!-- <label for="title"><b>Type your comments here</b></label> -->
+    <input type="text" placeholder="Comment here" name="commentContent" />
+
+    <input type="submit" value="Add Comment" class="btn" name="" id="" />
+  </form>
+</div>
+
+<!-- 
+
+ <div class="comment-box">
+    <h5 class="comment-user">Haridas</h5>
+    <p class="comment">
+      Ohh, thats maxwell has scored 200 with injuries. what a player..
+      <span class="comment-date">Fri Oct 25 2024</span>
+    </p>
+  </div>
+
+-->

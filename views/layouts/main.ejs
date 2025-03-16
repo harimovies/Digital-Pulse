@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=locals.title %></title>
+    <meta name="description" content="<%=locals.description %>" />
+    <link
+      rel="stylesheet"
+      href="<% if (locals.webPage === 'login') { %>
+     /css/login.css
+    <% } else if(locals.webPage === 'home') { %>
+      /css/home.css
+      <% } else { %>
+        /css/style.css
+        <% } %>"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- <link rel="stylesheet" href="/css/style.css" /> -->
+    <script
+      src="<% if (locals.webPage === 'login') { %>
+      /js/login.js
+     <% } else { %>
+      /js/script.js
+      <% } %>"
+      defer
+    ></script>
+    <!-- <script src="/js/script.js"></script> -->
+  </head>
+  <body>
+    <% if (locals.webPage != 'login') { %> <%-include('../partials/search') %>
+    <% } %>
+
+    <div class="container">
+      <% if (locals.webPage === 'login') { %>
+      <%-include('../partials/login_header.ejs')%> <%}else if(locals.webPage ===
+      'home'){%> <%-include('../partials/homeHeader.ejs')%> <%} else {%>
+      <%-include('../partials/header.ejs')%> <%}%>
+
+      <main class="main"><%-body %></main>
+      <%-include('../partials/footer') %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!-- Body -->
+<!-- <div id="form1">
+      <h3>Sign In</h3>
+      <form action="/signIn" method="POST">
+        <label for="username"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" />
+  
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" />
+  
+        <input type="submit" class="btn" value="Login" />
+      </form>
+    </div> -->
+
+<div id="form2">
+  <h3>Sign Up</h3>
+  <form action="/signUp" method="POST" onsubmit="return validate()">
+    <label for="username"><b>Username</b></label>
+    <input
+      type="text"
+      placeholder="Enter Username"
+      name="username"
+      id="username"
+    />
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" id="email" />
+
+    <label for="password"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      name="password"
+      id="password"
+    />
+
+    <label for="confirmPassword"><b>Confirm Password</b></label>
+    <input
+      type="password"
+      placeholder="Re-enter the Password"
+      name="confirmPassword"
+      id="confirmPassword"
+    />
+
+    <input type="submit" class="btn" value="Sign Up" />
+  </form>
+  <h4 style="color: red" id="er"></h4>
+</div>
+
+<script>
+  const wrongValue = document.getElementById("er");
+  const username = document.getElementById("username");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+  function validate() {
+    // username enter or not
+    if (username.value === "" || username.value === null) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Please enter username';
+      return false;
+    }
+    // username size
+    if (username.value.length < 6) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Username should contain atleast 6 characters';
+      return false;
+    }
+    if (email.value === "" || email.value === null) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Please enter email';
+      return false;
+    }
+    const emilArr = email.value.split("@");
+    if (
+      !(
+        emilArr[1] == "gmail.com" ||
+        emilArr[1] == "outlook.com" ||
+        emilArr[1] == "yahoo.com" ||
+        emilArr[1] == "facebook.com"
+      )
+    ) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Invalid email address. Please Enter a valid email';
+      return false;
+      // console.log("bad");
+    } else {
+      // console.log("good");
+    }
+    if (password.value === "" || password.value === null) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Please enter password';
+      return false;
+    }
+    if (password.value.length < 8) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Weak password. <br/> Password should contain atleast 8 characters, letters, numbers & symbols.';
+      return false;
+    }
+    if (/[0-9]/.test(password.value)) {
+    } else {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Password should contains numbers';
+      return false;
+    }
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password.value)) {
+    } else {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Password should contains symbols.';
+      return false;
+    }
+    // if (!/[a-zA-Z]/.test(password)) {
+    //   wrongValue.innerHTML =
+    //     '<span class="shape_circle" style="padding: 1px 8px">X</span> Password should contains letters, numbers & symbols.';
+    //   return false;
+    // }
+    if (confirmPassword.value === "" || confirmPassword.value === null) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Please re-enter the password';
+      return false;
+    }
+    if (password.value !== confirmPassword.value) {
+      wrongValue.innerHTML =
+        '<span class="shape_circle" style="padding: 1px 8px">X</span> Confirm password is not same. Please enter the same password in confirm password.';
+      return false;
+    }
+    return true;
+  }
+</script>
+
+<!-- Footer -->
+
+<%# new Date().getFullYear() %>

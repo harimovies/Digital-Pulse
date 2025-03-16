@@ -1,0 +1,16 @@
+<% if (errs.page === 'exitsuser') { %>
+<h2>User already exits with this email.</h2>
+<h4>Use with different email</h4>
+<a href="/user_register" class="btn">Sign Up</a>
+<% } %>
+<!--  -->
+<% if (errs.page === 'invalid') { %>
+<h2 style="color: red">
+  <span class="shape_circle">X</span>Invalid Username or Password
+</h2>
+<h4>Try Again</h4>
+<a href="/login" class="btn">Login</a>
+<a href="/forgot" style="display: block; margin-top: 25px">Forgot Password?</a>
+<% } %>
+
+<!-- <h4 style="color: red;"><span class="shape_circle">X</span> Invalid Username or Password</h3> -->

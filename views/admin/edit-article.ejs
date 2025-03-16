@@ -1,0 +1,27 @@
+<a href="/dashboard">&larr; Back</a>
+<div class="admin-title">
+  <h2>View / Edit Category</h2>
+  <form action="/delete-article/<%= data._id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete" class="btn-delete btn" />
+  </form>
+</div>
+
+<form
+  action="/edit-article/<%= data._id %>?_method=PUT"
+  method="POST"
+  enctype="multipart/form-data"
+  class="form1"
+>
+  <label for="title"><b>Article Type</b></label>
+  <input
+    type="text"
+    placeholder="Article Type"
+    name="articleType"
+    value="<%= data.articleType %>"
+  />
+
+  <label for="image"><b>Choose a image</b></label>
+  <input type="file" name="image" />
+
+  <input type="submit" value="Update" class="btn" name="" id="" />
+</form>
